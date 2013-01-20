@@ -1,4 +1,7 @@
 Acs::Application.routes.draw do
+  resources :room_states
+
+
   resources :room_types
 
 

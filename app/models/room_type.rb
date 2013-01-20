@@ -1,3 +1,5 @@
 class RoomType < ActiveRecord::Base
-  attr_accessible :json_data
+  attr_accessible :name, :json_data
+
+  has_many :rooms
 end
