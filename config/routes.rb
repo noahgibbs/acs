@@ -8,6 +8,6 @@ Acs::Application.routes.draw do
   resources :regions
   resources :worlds
 
-  root :to => 'player#index'
+  root :to => 'players#index'
 
 end
