@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id="global_container">
+    <div id="flash_container">
+      <% flash.keys.each do |msg_type| %>
+        <div class="<%= msg_type %>,flash_<%= msg_type %>"><%= flash[msg_type] %></div>
+      <% end %>
+    </div>
 
-<%= yield %>
+    <%= yield %>
 
+  </div>
 </body>
 </html>
