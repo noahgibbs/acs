@@ -20,6 +20,11 @@
   <%= @world.name %>
 </p>
 
+<p>
+  <b>Is Default:</b>
+  <%= @world.is_default %>
+</p>
+
 
 <%= link_to 'Edit', edit_world_path(@world) %> |
 <%= link_to 'Back', worlds_path %>
