@@ -1,4 +1,7 @@
 class RoomStatesController < ApplicationController
+  before_filter authenticate_user!
+  before_filter implementors_only!
+
   # GET /room_states
   # GET /room_states.json
   def index
