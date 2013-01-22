@@ -17,6 +17,7 @@ class WorldsController < ApplicationController
   # GET /worlds/1.json
   def show
     @world = World.find(params[:id])
+    @start_region_name = @world.start_region_id ? Region.find(@world.start_region_id).name : "None"
 
     respond_to do |format|
       format.html # show.html.erb

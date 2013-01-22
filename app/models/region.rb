@@ -1,5 +1,5 @@
 class Region < ActiveRecord::Base
-  attr_accessible :description, :name
+  attr_accessible :description, :name, :world_id
 
   belongs_to :world
   has_many :rooms

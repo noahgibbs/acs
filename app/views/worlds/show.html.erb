@@ -27,9 +27,19 @@
 
 <p>
   <b>Start Region:</b>
-  <%= @world.start_region_id ? @world.start_region.name : "None" %>
+  <%= @start_region_name %>
 </p>
 
+<p><b> Regions: </b></p>
+<ul>
+  <% @world.regions.each do |region| %>
+    <li> <%= link_to(region.name, region) %> </li>
+  <% end %>
+</ul>
+
+<%= link_to 'New Region', new_region_path %>
+
+<hr/>
 
 <%= link_to 'Edit', edit_world_path(@world) %> |
 <%= link_to 'Back', worlds_path %>
