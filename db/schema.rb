@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120232754) do
+ActiveRecord::Schema.define(:version => 20130122061533) do
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20130120232754) do
     t.text     "json_data"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "server_statuses", :force => true do |t|
+    t.integer  "world_id"
+    t.string   "server_host"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
