@@ -6,6 +6,7 @@ class AdminController < ApplicationController
 
   def index
     @world = default_world
+    @active_world_last_update = (@world && @world.server_status) ? @world.server_status.updated_at : nil
     db_worlds = World.all
     world_ids = db_worlds.map(&:id)
 
@@ -29,7 +30,7 @@ class AdminController < ApplicationController
 
   def start_server
     STDERR.puts "*** Starting server from Rails"
-    system("./game_server.rb &")
+    system("./game_server.rb #{default_world.id} &")
 
     unless $?.success?
       STDERR.puts "-> Failed starting server: #{$?.inspect}"
