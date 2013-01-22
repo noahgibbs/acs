@@ -3,7 +3,7 @@
 <p>
   Current active world: <%= @world ? @world.name : "None" %> <br/>
   Last update: <%= (@world && @world.server_status) ? time_ago_in_words(@world.server_status) : "None" %> <br/>
-  <%= link_to("Start server!", :action => :start_server, :method => :post) %>
+  <%= link_to("Start server!", { :action => :start_server }, :method => :post) %>
 </p>
 
 <p>

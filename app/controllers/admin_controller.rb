@@ -29,12 +29,12 @@ class AdminController < ApplicationController
 
   def start_server
     STDERR.puts "*** Starting server from Rails"
-    system("./game_server &")
+    system("./game_server.rb &")
 
     unless $?.success?
       STDERR.puts "-> Failed starting server: #{$?.inspect}"
     end
 
-    redirect_to :index
+    redirect_to :action => :index
   end
 end
