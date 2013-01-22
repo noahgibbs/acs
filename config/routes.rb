@@ -1,5 +1,6 @@
 Acs::Application.routes.draw do
   get "admin/index"
+  post "admin/start_server"
 
   devise_for :users
 

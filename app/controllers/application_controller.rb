@@ -9,4 +9,8 @@ class ApplicationController < ActionController::Base
   def implementors_only!
     # Soon, redirect non-implementors
   end
+
+  def authors_only!
+    # Soon, redirect non-authors
+  end
 end

@@ -1,2 +1,30 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<h1>Administer Your Game</h1>
+
+<p>
+  Current active world: <%= @world ? @world.name : "None" %> <br/>
+  Last update: <%= (@world && @world.server_status) ? time_ago_in_words(@world.server_status) : "None" %> <br/>
+  <%= link_to("Start server!", :action => :start_server, :method => :post) %>
+</p>
+
+<p>
+  <%= link_to("List of worlds", worlds_path) %>
+</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>World</th>
+      <th>Server Status</th>
+      <th>Last Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @statuses.each do |s| %>
+      <tr>
+        <td> <%= s.world.name %> </td>
+        <td> <%= s.server_host || "None" %> </td>
+        <td> <%= time_ago_in_words s.updated_at %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
