@@ -25,6 +25,11 @@
   <%= @world.is_default %>
 </p>
 
+<p>
+  <b>Start Region:</b>
+  <%= @world.start_region_id ? @world.start_region.name : "None" %>
+</p>
+
 
 <%= link_to 'Edit', edit_world_path(@world) %> |
 <%= link_to 'Back', worlds_path %>

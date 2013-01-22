@@ -5,6 +5,7 @@ class World < ActiveRecord::Base
   include TextTransform
 
   has_one :server_status
+  has_one :start_region, :class_name => :region
 
   def to_param
     id_and_name_to_param(id, name)

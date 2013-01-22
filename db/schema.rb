@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122061533) do
+ActiveRecord::Schema.define(:version => 20130122082034) do
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -86,9 +86,10 @@ ActiveRecord::Schema.define(:version => 20130122061533) do
     t.string   "author_name"
     t.string   "author_email"
     t.string   "name"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
     t.boolean  "is_default"
+    t.integer  "start_region_id"
   end
 
 end
