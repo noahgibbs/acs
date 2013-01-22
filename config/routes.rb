@@ -1,4 +1,6 @@
 Acs::Application.routes.draw do
+  get "admin/index"
+
   devise_for :users
 
   # Scaffolds for editing privileged data structures
