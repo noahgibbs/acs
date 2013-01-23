@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122082034) do
+ActiveRecord::Schema.define(:version => 20130122084309) do
 
   create_table "regions", :force => true do |t|
     t.string   "name"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20130122082034) do
     t.datetime "updated_at",      :null => false
     t.boolean  "is_default"
     t.integer  "start_region_id"
+    t.integer  "start_room_id"
   end
 
 end

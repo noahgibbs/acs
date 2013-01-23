@@ -18,6 +18,7 @@ class WorldsController < ApplicationController
   def show
     @world = World.find(params[:id])
     @start_region_name = @world.start_region_id ? Region.find(@world.start_region_id).name : "None"
+    @start_room_name = @world.start_room_id ? Room.find(@world.start_room_id).name : "None"
 
     respond_to do |format|
       format.html # show.html.erb
