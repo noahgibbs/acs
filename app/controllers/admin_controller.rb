@@ -38,4 +38,8 @@ class AdminController < ApplicationController
 
     redirect_to :action => :index
   end
+
+  def users
+    @users = User.all
+  end
 end
