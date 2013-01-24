@@ -1,4 +1,5 @@
-#!/usr/bin/env /Users/noah/src/github/acs/script/rails runner
+#!/usr/bin/env rails runner
+# Runner will work again when Rails 4.0 is production
 
 $LOAD_PATH.prepend File.join(File.dirname(__FILE__), "lib", "game")
 require "status"

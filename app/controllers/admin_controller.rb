@@ -30,7 +30,7 @@ class AdminController < ApplicationController
 
   def start_server
     STDERR.puts "*** Starting server from Rails"
-    system("./game_server.rb #{default_world.id} &")
+    system("./bin/rails runner game_server.rb #{default_world.id} &")
 
     unless $?.success?
       STDERR.puts "-> Failed starting server: #{$?.inspect}"
