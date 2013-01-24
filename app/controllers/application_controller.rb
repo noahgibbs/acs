@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-  include ActiveModel::ForbiddenAttributesProtection  # TODO: remove for Rails 4.0+
+  # Prevent CSRF attacks by raising an exception.
+  # For APIs, you may want to use :null_session instead.
+  protect_from_forgery with: :exception
 
   def default_world
     World.where(:is_default => true).first
