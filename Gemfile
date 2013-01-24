@@ -31,11 +31,7 @@ gem 'jbuilder', '~> 1.0.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', group: :development
+gem 'thin'
 
 # To use debugger
 # gem 'debugger'
