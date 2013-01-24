@@ -1,8 +1,6 @@
 require "text_transform"
 
 class World < ActiveRecord::Base
-  attr_accessible :author_email, :author_name, :description, :name,
-    :is_default, :start_region_id, :start_room_id
   include TextTransform
 
   has_one :server_status
