@@ -3,6 +3,8 @@ Acs::Application.routes.draw do
   get "admin/users"
   post "admin/start_server"
 
+  get "game" => "game#index"
+
   devise_for :users
 
   # Scaffolds for editing privileged data structures
