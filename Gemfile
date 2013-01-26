@@ -21,6 +21,7 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'multi_json'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -31,7 +32,7 @@ gem 'jbuilder', '~> 1.0.1'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-gem 'thin'
+gem 'puma'  # By default, "rails server" only gives 16 threads!
 
 # To use debugger
 # gem 'debugger'
