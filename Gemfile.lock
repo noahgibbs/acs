@@ -97,6 +97,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.1)
+    hiredis (0.4.5)
     i18n (0.6.1)
     jbuilder (1.0.2)
       activesupport (>= 3.0.0)
@@ -121,6 +122,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
+    redis (3.0.2)
     sass (3.2.5)
     sprockets (2.8.2)
       hike (~> 1.2)
@@ -152,11 +154,13 @@ DEPENDENCIES
   arel!
   coffee-rails!
   devise
+  hiredis
   jbuilder (~> 1.0.1)
   jquery-rails
   multi_json
   puma
   rails!
+  redis
   sass-rails!
   sprockets-rails!
   sqlite3
