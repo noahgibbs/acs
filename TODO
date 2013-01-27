@@ -1,2 +1,3 @@
 Admin view:
   - Auto-refresh page, or at a minimum the server status
+  - Implement security -- implementors_only! and authors_only!
