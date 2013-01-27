@@ -10,6 +10,7 @@
         <%= (Time.now - @active_world_last_update).to_i %> seconds
       <% end %>
     <% else %> None <% end %> <br/>
+  Redis: <%= @redis_connected ? "Connected" : "Not Connected" %> <br/>
   <%= link_to("Start server!", { :action => :start_server }, :method => :post) %>
 </p>
 

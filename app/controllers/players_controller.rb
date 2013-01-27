@@ -3,6 +3,9 @@ class PlayersController < ApplicationController
     @world = default_world
     return render :no_game_configured unless @world
 
+    @redis_connected = RedisPub.connected?
+    return render :no_redis_connected unless @redis_connected
+
     # Get current server status
     @status = ServerStatus.where(:world_id => @world.id).first
 

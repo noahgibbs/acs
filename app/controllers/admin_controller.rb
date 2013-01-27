@@ -10,6 +10,8 @@ class AdminController < ApplicationController
     db_worlds = World.all
     world_ids = db_worlds.map(&:id)
 
+    @redis_connected = RedisPub.connected?
+
     # Get current server status
     @statuses = ServerStatus.all
 
@@ -29,9 +31,18 @@ class AdminController < ApplicationController
   end
 
   def start_server
+    if RedisPub.connected?
+      STDERR.puts "*** Not starting Redis - already connected"
+    else
+      STDERR.puts "*** Starting Redis from Rails"
+      system("redis-server &")
+      unless $?.success?
+        STDERR.puts "-> Failed starting Redis: #{$?.inspect}"
+      end
+    end
+
     STDERR.puts "*** Starting server from Rails"
     system("./bin/rails runner game_server.rb #{default_world.id} &")
-
     unless $?.success?
       STDERR.puts "-> Failed starting server: #{$?.inspect}"
     end
