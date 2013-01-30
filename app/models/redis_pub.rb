@@ -1,30 +1,28 @@
 require "redis"
 
 class RedisPub
-  def self.mutex
-    @mutex ||= Mutex.new  # create it once
-  end
-
-  mutex  # Initialize
-
   def self.connection
-    mutex.synchronize do
-      @connection ||= Redis.new
-    end
+    return @connection if @connection
+
+    @connection ||= Redis.new
   end
 
-  def self.connected?
+  # TODO: don't make this return connected forever
+  def self.connected?(check_again)
     conn = self.connection
 
-    mutex.synchronize do
-      return @is_connected if @checked_connected
+    if check_again
+      @is_connected = nil
+      @checked_connected = nil
+    end
 
-      @checked_connected = true
-      begin
-        @is_connected = true
-        @connection.publish("none", "none")
-      rescue Redis::CannotConnectError
-      end
+    return @is_connected if @checked_connected
+
+    @checked_connected = true
+    begin
+      @is_connected = true
+      conn.publish("none", "none")
+    rescue Redis::CannotConnectError
     end
   end
 

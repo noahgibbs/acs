@@ -1,16 +1,37 @@
 class GameController < ApplicationController
   before_filter :set_up_sse
 
+  @@counter = 0
+
   # TODO: parameters, everything else
   def index
+    @@counter += 1
+    player = @@counter
+
+    Thread.new do
+      5.times do |i|
+        sleep 2
+        STDERR.print "PUB: player#{player}, message#{i}\n"
+        RedisPub.publish "player#{player}", "message#{i}"
+      end
+    end
+
     self.response_body = Enumerator.new do |y|
       begin
         loop do
-          y << sse_object({ :time => Time.now})
-          STDERR.puts "(output SSE obj)"
-          sleep 1
+          RedisSub.psubscribe("*") do |sub|
+            sub.subscribe { |*args| STDERR.print "SUB: #{args.inspect}\n"}
+            sub.unsubscribe { |*args| STDERR.print "UNSUB: #{args.inspect}\n"}
+            sub.message { |*args| STDERR.print "MSG: #{args.inspect}\n"}
+            sub.psubscribe { |*args| STDERR.print "PSUB: #{args.inspect}\n"}
+            sub.punsubscribe { |*args| STDERR.print "PUNSUB: #{args.inspect}\n"}
+            sub.pmessage do |*args|
+              STDERR.print "PMSG: #{args.inspect}\n"
+              y << sse_object({ :time => Time.now, :args => args.inspect })
+            end
+          end
         end
-      rescue IOError  # Necessary?
+      rescue IOError
         # When the client disconnects, we'll get an IOError on write
       end
     end
