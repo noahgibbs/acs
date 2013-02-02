@@ -1,56 +1,15 @@
 <h1>Import Images</h1>
 
-<div id="dropbox"><span id="droplabel">Drop file here...</span></div>
-<img id="preview" alt="[ preview will display here ]" />
-
 <%= form_tag({}, { :multipart => true }) do %>
-  <%= file_field_tag "image_data[]", :multiple => "multiple" %>
+  <div> Drag onto 'Choose Files' button! </div> <br/>
+  <%= file_field_tag "image_data[]", :multiple => "multiple", :class => :files_input %>
   <br/>
   <%= submit_tag %>
 <% end %>
 
-<%= javascript_tag do %>
-function noopHandler(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-}
-
-function handleReaderLoad(evt) {
-  var img = document.getElementById("preview");
-  img.src = evt.target.result;
-}
-
-function handleFiles(files) {
-  var file = files[0];
-
-  document.getElementById("droplabel").innerHTML = "Processing " + file.name;
-
-  var reader = new FileReader();
-
-  // init the reader event handlers
-  reader.onload = handleReaderLoad;
-
-  // begin the read operation
-  reader.readAsDataURL(file);
-}
-
-function dropHandler(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-
-  var files = evt.dataTransfer.files;
-  var count = files.length;
-
-  // Only call the handler if 1 or more files was dropped.
-  if (count > 0)
-    handleFiles(files);
-}
-
-var dropbox = document.getElementById("dropbox")
-
-// init event handlers
-dropbox.addEventListener("dragenter", noopHandler, false);
-dropbox.addEventListener("dragexit", noopHandler, false);
-dropbox.addEventListener("dragover", noopHandler, false);
-dropbox.addEventListener("drop", dropHandler, false);
-<% end %>
+<div class="image_previews">
+  <img id="preview_1" alt="[ preview will display here ]" />
+  <img id="preview_2" alt="[ preview will display here ]" />
+  <img id="preview_3" alt="[ preview will display here ]" />
+  <img id="preview_4" alt="[ preview will display here ]" />
+</div>
