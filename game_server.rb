@@ -1,5 +1,5 @@
 #!/usr/bin/env rails runner
-# Runner will work again when Rails 4.0 is production
+# Runner will work when Rails 4.0 is released, not pre-production
 
 $LOAD_PATH.prepend File.join(File.dirname(__FILE__), "lib", "game")
 require "status"
@@ -17,8 +17,24 @@ if !world
   exit -3
 end
 
+require "redis"
+
+Thread.new do
+  RedisSub.psubscribe("*") do |sub|
+    sub.pmessage do |*args|
+      STDERR.puts "GAMESRV: PMSG: #{args}"
+    end
+  end
+end
+
+iter = 0
+
 loop do
   GameStatus.update(world.id)
-  break  # For now, one iteration
+
+  RedisPub.publish("clock", "Iteration: #{iter}")
+  sleep 1
+
+  iter += 1
 end
 puts "Finished trivial update successfully."
