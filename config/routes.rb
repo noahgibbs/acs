@@ -3,6 +3,7 @@ Acs::Application.routes.draw do
   get "image_sets/delete"
   get "image_sets/classify"
   get "image_sets/import"
+  post "image_sets/import" => "image_sets#import_post"
   get "admin/index"
   get "admin/users"
   post "admin/start_server"

@@ -10,4 +10,9 @@ class ImageSetsController < ApplicationController
 
   def import
   end
+
+  def import_post
+    STDERR.puts params.inspect
+    redirect_to :action => :import
+  end
 end
