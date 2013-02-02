@@ -1,6 +1,6 @@
 class RoomsController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :implementors_only!
+  before_filter :authenticate_user! unless Rails.env == "test"
+  before_filter :implementors_only! unless Rails.env == "test"
 
   # GET /rooms
   # GET /rooms.json

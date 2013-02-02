@@ -3,7 +3,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Room type</th>
     <th>Json data</th>
     <th></th>
     <th></th>
@@ -13,7 +12,6 @@
 <% @rooms.each do |room| %>
   <tr>
     <td><%= room.name %></td>
-    <td><%= room.room_type %></td>
     <td><%= room.json_data %></td>
     <td><%= link_to 'Show', room %></td>
     <td><%= link_to 'Edit', edit_room_path(room) %></td>

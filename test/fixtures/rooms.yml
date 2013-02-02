@@ -2,10 +2,8 @@
 
 one:
   name: MyString
-  room_type: 
   json_data: MyText
 
 two:
   name: MyString
-  room_type: 
   json_data: MyText
