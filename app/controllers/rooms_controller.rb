@@ -43,7 +43,7 @@ class RoomsController < ApplicationController
   # POST /rooms
   # POST /rooms.json
   def create
-    @room = Room.new(params[:room])
+    @room = Room.new(params[:room].permit(:name, :json_data))
 
     respond_to do |format|
       if @room.save
@@ -62,7 +62,7 @@ class RoomsController < ApplicationController
     @room = Room.find(params[:id])
 
     respond_to do |format|
-      if @room.update_attributes(params[:room])
+      if @room.update_attributes(params[:room].permit(:name, :json_data))
         format.html { redirect_to @room, notice: 'Room was successfully updated.' }
         format.json { head :no_content }
       else
