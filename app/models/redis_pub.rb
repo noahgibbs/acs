@@ -8,7 +8,7 @@ class RedisPub
   end
 
   # TODO: don't make this return connected forever
-  def self.connected?(check_again)
+  def self.connected?(check_again = false)
     conn = self.connection
 
     if check_again
