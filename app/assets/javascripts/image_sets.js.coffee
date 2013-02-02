@@ -3,11 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).on "change", ".files_input", () ->
+  $(".image_previews img").remove()
   handleFiles($(".files_input")[0].files)
 
 handleReaderLoad = (evt, dest) ->
   console.debug "Reading into #{dest}!"
-  img = document.getElementById(dest)
+  $(".image_previews").append($("<img id='preview_#{dest}'> </img>"))
+  console.debug "Reading into #preview_#{dest}"
+  img = $(".image_previews #preview_#{dest}")[0]
   img.src = evt.target.result
 
 handleFiles = (files) ->
@@ -19,7 +22,7 @@ handleFiles = (files) ->
 
       # init the reader event handlers
       reader.onload = (evt) ->
-        handleReaderLoad(evt, "preview_#{local_offset}")
+        handleReaderLoad(evt, local_offset)
 
       # begin the read operation
       reader.readAsDataURL(file)

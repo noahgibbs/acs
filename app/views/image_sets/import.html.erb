@@ -2,14 +2,11 @@
 
 <%= form_tag({}, { :multipart => true }) do %>
   <div> Drag onto 'Choose Files' button! </div> <br/>
-  <%= file_field_tag "image_data[]", :multiple => "multiple", :class => :files_input %>
+  <%= file_field_tag "image_data[]",
+    { :multiple => "multiple", :class => :files_input, :accept => "image/*" } %>
   <br/>
   <%= submit_tag %>
 <% end %>
 
 <div class="image_previews">
-  <img id="preview_1" alt="[ preview will display here ]" />
-  <img id="preview_2" alt="[ preview will display here ]" />
-  <img id="preview_3" alt="[ preview will display here ]" />
-  <img id="preview_4" alt="[ preview will display here ]" />
 </div>
