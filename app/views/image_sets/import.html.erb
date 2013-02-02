@@ -3,8 +3,8 @@
 <div id="dropbox"><span id="droplabel">Drop file here...</span></div>
 <img id="preview" alt="[ preview will display here ]" />
 
-<%= form_tag({}, :enctype => "multipart/form-data") do %>
-  <%= file_field_tag "image_data", :multiple => true %>
+<%= form_tag({}, { :multipart => true }) do %>
+  <%= file_field_tag "image_data[]", :multiple => "multiple" %>
   <br/>
   <%= submit_tag %>
 <% end %>
