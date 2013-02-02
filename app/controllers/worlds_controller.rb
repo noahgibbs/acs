@@ -45,7 +45,7 @@ class WorldsController < ApplicationController
   # POST /worlds
   # POST /worlds.json
   def create
-    @world = World.new(params[:world])
+    @world = World.new(params[:world].permit(:author_email, :author_name, :description, :name))
 
     respond_to do |format|
       if @world.save
@@ -64,7 +64,7 @@ class WorldsController < ApplicationController
     @world = World.find(params[:id])
 
     respond_to do |format|
-      if @world.update_attributes(params[:world])
+      if @world.update_attributes(params[:world].permit(:author_email, :author_name, :description, :name))
         format.html { redirect_to @world, notice: 'World was successfully updated.' }
         format.json { head :no_content }
       else
