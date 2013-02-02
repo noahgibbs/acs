@@ -14,3 +14,5 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+public/uploads/game_image/image_data/*
+public/uploads/tmp/*
