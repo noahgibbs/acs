@@ -1,4 +1,8 @@
 Acs::Application.routes.draw do
+  get "image_sets/create"
+  get "image_sets/delete"
+  get "image_sets/classify"
+  get "image_sets/import"
   get "admin/index"
   get "admin/users"
   post "admin/start_server"
