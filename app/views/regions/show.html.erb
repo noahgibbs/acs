@@ -10,6 +10,11 @@
   <%= @region.description %>
 </p>
 
+<p>
+  <b>JSON data:</b>
+  <%= @region.json_data %>
+</p>
+
 <p><b> Rooms: </b></p>
 <ul>
   <% @region.rooms.each do |room| %>

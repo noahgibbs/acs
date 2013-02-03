@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130203150432) do
+ActiveRecord::Schema.define(version: 20130203150614) do
 
   create_table "game_images", force: true do |t|
     t.string   "image_data"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20130203150432) do
     t.integer  "world_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "json_data"
   end
 
   create_table "rooms", force: true do |t|

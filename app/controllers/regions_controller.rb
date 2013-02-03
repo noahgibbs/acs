@@ -43,7 +43,7 @@ class RegionsController < ApplicationController
   # POST /regions
   # POST /regions.json
   def create
-    @region = Region.new(params[:region].permit(:description, :name))
+    @region = Region.new(region_param)
 
     respond_to do |format|
       if @region.save
@@ -62,7 +62,7 @@ class RegionsController < ApplicationController
     @region = Region.find(params[:id])
 
     respond_to do |format|
-      if @region.update_attributes(params[:region].permit(:description, :name))
+      if @region.update_attributes(region_param)
         format.html { redirect_to @region, notice: 'Region was successfully updated.' }
         format.json { head :no_content }
       else
@@ -83,4 +83,11 @@ class RegionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
+  def region_param
+    params[:region].permit(:description,:name,:json_data)
+  end
+
 end
