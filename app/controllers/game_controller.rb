@@ -3,7 +3,6 @@ class GameController < ApplicationController
 
   @@counter = 0
 
-  # TODO: parameters, everything else
   def index
     @@counter += 1
     player = @@counter
