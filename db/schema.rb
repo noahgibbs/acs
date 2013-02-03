@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130202050514) do
+ActiveRecord::Schema.define(version: 20130203150432) do
 
   create_table "game_images", force: true do |t|
     t.string   "image_data"
@@ -25,19 +25,6 @@ ActiveRecord::Schema.define(version: 20130202050514) do
     t.integer  "world_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-  end
-
-  create_table "room_states", force: true do |t|
-    t.text     "json_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "room_types", force: true do |t|
-    t.string   "name"
-    t.text     "json_data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "rooms", force: true do |t|
