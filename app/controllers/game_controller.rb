@@ -1,20 +1,7 @@
 class GameController < ApplicationController
   before_filter :set_up_sse
 
-  @@counter = 0
-
-  def index
-    @@counter += 1
-    player = @@counter
-
-    Thread.new do
-      5.times do |i|
-        sleep 2
-        STDERR.print "PUB: player#{player}, message#{i}\n"
-        RedisPub.publish "player#{player}", "message#{i}"
-      end
-    end
-
+  def events
     self.response_body = Enumerator.new do |y|
       begin
         loop do
