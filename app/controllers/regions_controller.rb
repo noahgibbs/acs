@@ -2,6 +2,28 @@ class RegionsController < ApplicationController
   before_filter :authenticate_user! unless Rails.env == "test"
   before_filter :implementors_only! unless Rails.env == "test"
 
+  # GET /regions/1/edit_data
+  # GET /regions/1/edit_data.json
+  def edit_data
+    # TODO: region-type abstraction.  Build one, then extract it.
+    @region = Region.find(params[:id])
+    @data = MultiJson.load(@region.json_data || "{}")
+    @data["terrain"] ||= []
+  end
+
+  # PUT /regions/1/edit_data
+  # PUT /regions/1/edit_data.json
+  def update_data
+    region = Region.find(params[:id])
+    data = MultiJson.load(@region.json_data || "{}")
+
+    # TODO: merge incoming data
+
+    region.json_data = MultiJson.dump(data, :pretty => true)
+
+    redirect_to :action => :show, :id => id
+  end
+
   # GET /regions
   # GET /regions.json
   def index
@@ -17,6 +39,7 @@ class RegionsController < ApplicationController
   # GET /regions/1.json
   def show
     @region = Region.find(params[:id])
+    @data = MultiJson.load(@region.json_data || "{}")
 
     respond_to do |format|
       format.html # show.html.erb

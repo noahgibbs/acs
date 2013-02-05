@@ -11,8 +11,12 @@
 </p>
 
 <p>
-  <b>JSON data:</b>
-  <%= @region.json_data %>
+  <b>Region Type:</b>
+  <%= @data["type"] || "(None)" %>
+</p>
+
+<p>
+  <%= link_to 'Start Type-Specific Region Editor', :action => :edit_data %>
 </p>
 
 <p><b> Rooms: </b></p>
