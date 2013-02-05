@@ -27,5 +27,10 @@
   <%= @region.world ? @region.world.name : "None" %>
 </p>
 
+<p>
+  <b>JSON data:</b>
+  <%= @region.json_data %>
+</p>
+
 <%= link_to 'Edit', edit_region_path(@region) %> |
 <%= link_to 'Back', regions_path %>
