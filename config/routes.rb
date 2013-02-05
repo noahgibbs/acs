@@ -8,13 +8,16 @@ Acs::Application.routes.draw do
   get "admin/users"
   post "admin/start_server"
 
-  get "game" => "game#index"
+  get "game/events"
 
   devise_for :users
 
   # Scaffolds for editing privileged data structures
   resources :rooms
-  resources :regions
+  resources :regions do
+    get "edit_data", :on => :member  # TODO: Separate nested 'data' resource?
+    put "update_data", :on => :member
+  end
   resources :worlds
 
   root :to => 'players#index'
