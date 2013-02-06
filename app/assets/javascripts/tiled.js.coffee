@@ -15,6 +15,16 @@ class window.TiledDisplay
     dx = 0
     dy = 0
 
+    # Store the current transformation matrix
+    context.save();
+
+    # Use the identity matrix while clearing the canvas
+    context.setTransform(1, 0, 0, 1, 0, 0);
+    context.clearRect(0, 0, @canvas.width, @canvas.height);
+
+    # Restore the transform
+    context.restore();
+
     for row in @tiles
       for column in row
         terrain_list = column
