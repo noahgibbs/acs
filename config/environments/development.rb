@@ -4,10 +4,14 @@ Acs::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = true
+  config.cache_classes = false
 
   # Do not eager load code on boot.
-  config.eager_load = true
+  config.eager_load = false
+
+  # ACS NOTE: YOU HAVE TO CACHE CLASSES AND EAGER LOAD FOR MULTI-THREADING, INCLUDING
+  # SERVER-SIDE EVENTS!  YOU CAN'T RUN THE GAME WITHOUT EAGER_LOAD ON AND
+  # CACHE CLASSES OFF!
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
