@@ -1,4 +1,7 @@
 Acs::Application.routes.draw do
+  get "terrains/classify"
+  post "terrains/terrain_set"
+  get "terrains/show"
   get "image_sets/create"
   get "image_sets/delete"
   get "image_sets/classify"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130203150614) do
+ActiveRecord::Schema.define(version: 20130211045400) do
 
   create_table "game_images", force: true do |t|
     t.string   "image_data"
@@ -42,6 +42,21 @@ ActiveRecord::Schema.define(version: 20130203150614) do
     t.string   "server_host"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "terrain_sets", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "terrains", force: true do |t|
+    t.string   "name"
+    t.integer  "game_image_id"
+    t.integer  "passibility"
+    t.integer  "terrain_set_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
