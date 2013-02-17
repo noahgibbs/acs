@@ -2,7 +2,7 @@ class TerrainsController < ApplicationController
   def classify
     @images = GameImage.all
     @terrain_set = TerrainSet.where(:name => :default).first_or_create
-    until @terrain_set.terrains.count >= 30
+    (30 - @terrain_set.terrains.count).times do
       @terrain_set.terrains.build
     end
   end

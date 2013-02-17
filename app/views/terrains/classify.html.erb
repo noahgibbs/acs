@@ -17,7 +17,12 @@
         <%= tf.label :game_image_id %> <br/>
         <%= tf.text_field :game_image_id, :class => :dropdown_result %>
         <dl class="dropdown">
-          <dt><a href="#"><span>Select a terrain image</span></a></dt>
+          <dt><a href="#"><span>Select a terrain image
+              <% if tf.object.game_image %>
+                    <img class="flag" height="80"
+                         src="<%= tf.object.game_image.image_data.url %>" />
+              <% end %>
+              </span></a></dt>
           <dd>
             <ul>
               <% @images.each do |image| %>
